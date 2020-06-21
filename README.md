@@ -1,6 +1,6 @@
 # MyNote
 
-An personal notebook/blog frame bases on Apache and MySQL.It was build mainly in PHP.  
+A personal notebook/blog frame bases on Apache and MySQL.It was built mainly on PHP.  
 It's a practice project of PHP, therefore it's a hand-made program with simple functions.
 
 
