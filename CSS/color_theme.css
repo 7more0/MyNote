@@ -1,0 +1,9 @@
+:root{
+    --header-bgcolor:#e3e3e3;
+    --header-fontcolor:#a68a74;
+    --footer-bgcolor:var(--header-bgcolor);
+    --footer-fontcolor:var(--header-fontcolor);
+    /*special format font color setting*/
+    --code-color:#008fd3;
+    --code-bgcolor:#010005;
+}

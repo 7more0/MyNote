@@ -1,0 +1,48 @@
+/*:root{*/
+/*    --header-bgcolor:#d3e8e1;*/
+/*    --header-fontcolor:#e44a66;*/
+/*}*/
+@import "color_theme.css";
+.header{
+    height: 100px;
+    font-family: Palatino Linotype;
+    color: var(--header-fontcolor);
+    /*.}
+header{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 160px;
+    padding: 20px;*/
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.7);
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background-color: var(--header-bgcolor);
+    -webkit-box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;
+    /*text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;*/
+}
+.header:hover {
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    -webkit-box-shadow: 0 0 1px 0 rgba(0,0,0,0.3) inset;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.3) inset;
+}
+.header_img_div{width:20%;height: 100px;float: left}
+.header_img_div img{width: 120px;height: 95%}
+.header_index_div{width: 80%;float: right;height: 100px;-ms-flex-line-pack: center;align-content: center;}/*background-color: #f9f7e8}#3c69c48*/
+.header_index_div a{padding: 10% auto 10% auto;text-decoration: none;color: var(--header-fontcolor);font-size: larger}
+.header_index_div ul{float: right; text-align: center;list-style-type: none;position: absolute;margin: 0px;}
+.header_index_div>ul>li{font-size:18px;width: 120px;line-height: 100px;display: inline-block;}
+.header_index_div>ul>li:hover{background-color: var(--header-bgcolor);font-size: 21px}
+.header_index_div ul li:hover ul{background-color:var(--header-bgcolor);z-index: 2;padding: 0}
+.header_index_div ul li:hover ul,div{margin: 0}
+.header_index_div ul li:hover ul li{font-size: 15px;height:30px;width:120px;text-align: center;z-index: 2;margin: 0;display: block}
+.header_index_div ul li:hover ul li a{font-size: 15px;line-height:30px;z-index: 2;color: var(--header-fontcolor)}
+.header_index_div ul li ul li{font-size: 0px;width: 0px;height: 0px;line-height: 0px;}
+.header_index_div ul li form{font-size: 15px;}
+.header_index_div ul li form p{line-height: 100px;margin:0 auto 0 10px}
