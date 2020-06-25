@@ -19,6 +19,7 @@
             <div class="contents">
                 <?php
                     if (!isset($_GET['page'])){
+//                        phpinfo();
                         show_page('root');
                     }else{
                         show_page($_GET['page']);

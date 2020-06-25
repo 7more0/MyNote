@@ -22,8 +22,8 @@ header{
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     background-color: var(--header-bgcolor);
-    -webkit-box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;
-    box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;
+    /*-webkit-box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;*/
+    /*box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;*/
     /*text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;*/
 }
 .header:hover {
@@ -36,7 +36,12 @@ header{
 .header_img_div img{width: 120px;height: 95%}
 .header_index_div{width: 80%;float: right;height: 100px;-ms-flex-line-pack: center;align-content: center;}/*background-color: #f9f7e8}#3c69c48*/
 .header_index_div a{padding: 10% auto 10% auto;text-decoration: none;color: var(--header-fontcolor);font-size: larger}
-.header_index_div ul{float: right; text-align: center;list-style-type: none;position: absolute;margin: 0px;}
+.header_index_div ul{float: right; text-align: center;
+    list-style-type: none;
+    position: absolute;margin: 0px;padding-left: 0;
+}
+.header_index_div li:hover{filter: brightness(110%)}/*change brightness when hover*/
+.header_index_div div:hover{filter: brightness(95%)}
 .header_index_div>ul>li{font-size:18px;width: 120px;line-height: 100px;display: inline-block;}
 .header_index_div>ul>li:hover{background-color: var(--header-bgcolor);font-size: 21px}
 .header_index_div ul li:hover ul{background-color:var(--header-bgcolor);z-index: 2;padding: 0}
@@ -46,3 +51,41 @@ header{
 .header_index_div ul li ul li{font-size: 0px;width: 0px;height: 0px;line-height: 0px;}
 .header_index_div ul li form{font-size: 15px;}
 .header_index_div ul li form p{line-height: 100px;margin:0 auto 0 10px}
+
+/*style sheet for dialog part*/
+div.dialog>form li{text-align: left}
+div.dialog{padding: 10px 20px 10px 20px;
+    border:solid 2px;border-color: var(--header-fontcolor);border-radius: 6px;
+    background-color: var(--header-bgcolor);
+}
+div.dialog img{height:15px;width:17px;
+    float: right}
+div.dialog h5{float: left}
+div.dialog .dialog_button{
+    background-color:var(--header-bgcolor);
+    border-radius:28px;
+    border:2px solid var(--header-fontcolor);
+    display:inline-block;
+    cursor:pointer;
+    color:var(--header-fontcolor);
+    font-family:Palatino Linotype;
+    font-size:12px;
+    padding:3px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #283966;
+}
+div.dialog li:hover{filter: brightness(110%)}
+div.dialog .dialog_button:hover{filter: brightness(110%)}
+
+/*user info*/
+#user_info {
+    float:right;
+    position: relative;
+    list-style:none;
+    /*display: block;*/
+    /*z-index: 1000;*/
+}
+/*#user_info ul li{display: list-item}*/
+#user_info:hover{
+    filter: brightness(110%);
+}

@@ -2,7 +2,7 @@
 //configure database settings here
 //put this file outside the accessible folder
     if ($dbc=mysqli_connect('localhost','root','install')){
-        $name='sys';     //name of database
+        $name='test';     //name of database
         $query="CREATE DATABASE IF NOT EXISTS $name";
         if (mysqli_query($dbc,$query)){
             //choose database

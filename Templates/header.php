@@ -9,8 +9,7 @@
         @import "CSS/body.css";
         @import "CSS/footer.css";
 	</style>
-    <script>
-        import 'Functions/dialog.js';
+    <script type="text/javascript" src="Functions/dialog.js">
     </script>
 </head>
 <body>
@@ -26,14 +25,20 @@
                 <?php
                     mk_header_index();
                 ?>
+                <div id='dialog_add' class="dialog" title="Page Management" style="display: none">
+                    <form style="background: var(--header-bgcolor)" action="Functions/opt_all.php" method="post">
+                        <?php
+                            mk_dialog_table_add();
+                        ?>
+                    </form>
+                </div>
+                <div id="dialog_del" class="dialog" title="Page Management" style="display: none">
+                    <form style="background: var(--header-bgcolor)" action="Functions/opt_all.php" method="post">
+                        <?php
+                            mk_dialog_table_del();
+                        ?>
+                    </form>
+                </div>
             </div>
-<!--            <div>-->
-<!--                <form id='dialog' style="display: none;position: fixed">-->
-<!--                    <table>-->
-<!--                        <tr>-->
-<!--                            <th>New</th>-->
-<!--                            <th>Delete</th>-->
-<!--                        </tr>-->
-<!--                    </table>-->
-<!--                </form>-->
+
 		</div>

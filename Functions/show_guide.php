@@ -21,12 +21,14 @@
         //$index='System';
         $query="SELECT son from sys_index WHERE name='"."$index'";
         $sons=explode(',',mysqli_fetch_array(mysqli_query($dbc,$query))['son']);
-        print "<p><a href='index.php' class='home'>HOME</a><h1>$index</h1><form action='Functions/opr_page.php' method='post'>
-        <input type='hidden' name='folder' value='".$index."'>"."
-        <input type='text' name='name' autocomplete=\"off\">
-        <input type='submit' value='+'  name='add_page'>
-        <input type='submit' value='-'  name='del_page'></form>
-        </p>\n";
+        print "<p><a href='index.php' class='home'>HOME</a><h1>$index</h1>";
+//  process page level operations in old version.
+//        <form action='Functions/opr_page.php' method='post'>
+//        <input type='hidden' name='folder' value='".$index."'>";
+//        "<input type='text' name='name' autocomplete=\"off\">
+//        <input type='submit' value='+'  name='add_page'>
+//        <input type='submit' value='-'  name='del_page'></form>
+//        </p>\n";
         print '<h2>IN THIS FOLDER:</h2>';
         if ($sons){
             //子结点不为空（为空时划分字符串得到数组有唯一元素'')

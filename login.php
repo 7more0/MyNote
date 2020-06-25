@@ -10,6 +10,10 @@
         setcookie('usrname',$_POST['usrname'],time()+1000);
         header('Location:./index.php');
         exit();
+    }elseif (isset($_POST['logout'])){
+        //logout
+        setcookie('usrname','none',time()-1000);
+        header('Location:./index.php');
     }else{
         //print_r($_POST);
         ?>

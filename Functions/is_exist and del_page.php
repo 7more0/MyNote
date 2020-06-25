@@ -25,33 +25,44 @@
             $query="SELECT son FROM sys_index WHERE name='".$folder."'";
             $result=mysqli_query($dbc,$query);
             $sons=mysqli_fetch_array($result)['son'];
-            $query="UPDATE sys_index SET son ='$sons".",{$table}' WHERE name='".$folder."'";
+            if ($sons==''){
+                //empty folder
+                $sons=$table;
+            }else{
+                $sons=$sons.",{$table}";
+            }
+            $query="UPDATE sys_index SET son ='{$sons}' WHERE name='".$folder."'";
             mysqli_query($dbc,$query);
+            print '<h1>Successfully add a new page!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
+        }else{
+            print '<h1>This page already exists!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
         }
         mysqli_close($dbc);
-        print '<h2>DONE!</h2>';
+
     }
 
-
-    function del_page($table,$folder){
+    function del_page($table, $folder, $dbc){
         //delete $table and clear the index_tree
-        include 'connect_db.php';
+//        include 'connect_db.php';
         //delete table
         $query="DROP TABLE $table";
         mysqli_query($dbc,$query);
         $query="DELETE FROM sys_index WHERE name='{$table}'";
         mysqli_query($dbc,$query);
-        print mysqli_error($dbc);
+//        print mysqli_error($dbc);
         //clear the index tree
         $query="SELECT son FROM sys_index WHERE name='".$folder."'";
         $result=mysqli_query($dbc,$query);
         $sons=mysqli_fetch_array($result)['son'];
-        $search=",".$table;
+        if (count(explode(',', $sons))==1){
+            $search=$table;
+        }else{
+            $search=",".$table;
+        }
         $sons=str_ireplace($search,'',$sons);
         $query="UPDATE sys_index SET son ='{$sons}' WHERE name='{$folder}'";
         mysqli_query($dbc,$query);
         mysqli_close($dbc);
-        print '<h2>DONE!</h2>';
     }
 
     //is_exsit('test','sys');
