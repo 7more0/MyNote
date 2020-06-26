@@ -1,8 +1,14 @@
 <?php
 //configure database settings here
 //put this file outside the accessible folder
+
+//global variables config
+$upload_base='E://A/WorkShop/XAMPP/htdocs/www/MyNote/Storage/';//base path of upload file(such as file/photo)
+$read_base='Storage/';
+
+//database connection config
     if ($dbc=mysqli_connect('localhost','root','install')){
-        $name='test';     //name of database
+        $name='sys';     //name of database
         $query="CREATE DATABASE IF NOT EXISTS $name";
         if (mysqli_query($dbc,$query)){
             //choose database

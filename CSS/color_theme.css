@@ -1,9 +1,17 @@
 :root{
-    --header-bgcolor:#e3e3e3;
-    --header-fontcolor:#a68a74;
+    /*--header-bgcolor:#e3e3e3;*/
+    /*--header-fontcolor:#a68a74;*/
+    --header-fontcolor:#e9e8d4;
+    --header-bgcolor:#3c485e;
     --footer-bgcolor:var(--header-bgcolor);
     --footer-fontcolor:var(--header-fontcolor);
+    /*left guide*/
+    --guide-fontcolor:var(--header-bgcolor);
+    --guide-bgcolor:var(--header-fontcolor);
     /*special format font color setting*/
     --code-color:#008fd3;
     --code-bgcolor:#010005;
+    /*control panels*/
+    --control_bgcolor:var(--header-bgcolor);
+    --control_fontcolor:var(--header-fontcolor);
 }

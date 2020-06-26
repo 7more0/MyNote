@@ -7,11 +7,13 @@
             switch ($type) {
                 case 'usr':
                     //search for user, return user's password
-                    $query = "SELECT passwd FROM usrs WHERE usrname='"."$key_val'";
+                    $query = "SELECT * FROM usrs WHERE usrname='"."$key_val'";
                     $result = mysqli_query($dbc, $query);
                     $row=mysqli_fetch_array($result);
+                    $passwd=$row['passwd'];
+                    $previlege=$row['privilege'];
                     mysqli_close($dbc);
-                    return $row['passwd'];
+                    return array($passwd, $previlege);
                 case 'page':
                     //search for page, return link to table select result
                     $query = "SELECT * FROM sys_index WHERE name='{$key_val}'";

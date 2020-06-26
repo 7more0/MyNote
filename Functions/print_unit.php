@@ -1,6 +1,10 @@
 <?php
     //display all contents in hand for editing
     //include 'search.php';
+    function br2nl($text){
+        //<br> to \r or \r\n
+        return preg_replace('/<br\\s*?\/??>/i','',$text);
+    }
     function write_contents_edit($row){
         //不同类型输出
         print '<div class="node_div">';
@@ -11,7 +15,13 @@
             print "<input type='hidden' value='{$row['id']}'>";
             print '</div>';
         }elseif ($row['flag']=='text'||$row['flag']=='code'){
-            print "<textarea>{$row['contents']}</textarea>";
+            $contents=br2nl($row['contents']);//replace <br/> with \r
+            print "<textarea>{$contents}</textarea>";
+            print "<input type='hidden' value='{$row['id']}'>";
+            print '</div>';
+        }elseif ($row['flag']=='graph'){
+            echo "<img src='{$row['contents']}' height='200px'>";
+            print "<input type='file' value='{$row['contents']}'>";
             print "<input type='hidden' value='{$row['id']}'>";
             print '</div>';
         }else{

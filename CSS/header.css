@@ -20,11 +20,15 @@ header{
     border-radius: 9px;
     text-align: center;
     -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
     background-color: var(--header-bgcolor);
     /*-webkit-box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;*/
     /*box-shadow: 6px 4px 1px 0 rgba(0,0,0,0.3) ;*/
     /*text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;*/
+}
+#header_img{display: none}
+#header_name{
+    /*float: right;*/
 }
 .header:hover {
     -webkit-border-radius: 16px;
@@ -48,26 +52,26 @@ header{
 .header_index_div ul li:hover ul,div{margin: 0}
 .header_index_div ul li:hover ul li{font-size: 15px;height:30px;width:120px;text-align: center;z-index: 2;margin: 0;display: block}
 .header_index_div ul li:hover ul li a{font-size: 15px;line-height:30px;z-index: 2;color: var(--header-fontcolor)}
-.header_index_div ul li ul li{font-size: 0px;width: 0px;height: 0px;line-height: 0px;}
+.header_index_div ul li ul li{font-size: 0px;width: 0px;height: 0px;line-height: 0px;display: none}
 .header_index_div ul li form{font-size: 15px;}
 .header_index_div ul li form p{line-height: 100px;margin:0 auto 0 10px}
 
 /*style sheet for dialog part*/
 div.dialog>form li{text-align: left}
 div.dialog{padding: 10px 20px 10px 20px;
-    border:solid 2px;border-color: var(--header-fontcolor);border-radius: 6px;
-    background-color: var(--header-bgcolor);
+    border:solid 2px;border-color: var(--control_bgcolor);border-radius: 6px;
+    background-color: var(--control_bgcolor);
 }
 div.dialog img{height:15px;width:17px;
     float: right}
 div.dialog h5{float: left}
 div.dialog .dialog_button{
-    background-color:var(--header-bgcolor);
+    background-color:var(--control_bgcolor);
     border-radius:28px;
-    border:2px solid var(--header-fontcolor);
+    border:2px solid var(--control_fontcolor);
     display:inline-block;
     cursor:pointer;
-    color:var(--header-fontcolor);
+    color:var(--control_fontcolor);
     font-family:Palatino Linotype;
     font-size:12px;
     padding:3px 10px;
@@ -78,14 +82,10 @@ div.dialog li:hover{filter: brightness(110%)}
 div.dialog .dialog_button:hover{filter: brightness(110%)}
 
 /*user info*/
-#user_info {
-    float:right;
-    position: relative;
-    list-style:none;
-    /*display: block;*/
-    /*z-index: 1000;*/
-}
-/*#user_info ul li{display: list-item}*/
-#user_info:hover{
-    filter: brightness(110%);
+#logout {
+    margin-top: 5%;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    color: var(--control_fontcolor);
 }

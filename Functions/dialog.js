@@ -50,20 +50,5 @@ function path_control() {
     }
 }
 
-//logout form control
-function show_logout() {
-    var id='logout';
-    obj=document.getElementById(id);
-    obj.style.display='block';
-    // obj=document.getElementsByName(id)[0];
-    // obj.style.display='block';
-}
-function hide_logout() {
-    var id='logout';
-    obj=document.getElementById(id);
-    obj.style.display='none';
-    // obj=document.getElementsByName(id)[0];
-    // obj.style.display='block';
-}
 // hide_dialog();
 // show_dialog('dialog', 200,200);

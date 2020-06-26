@@ -5,14 +5,25 @@
     include 'Functions/search.php';
 ?>
 <?php
-    if (isset($_POST['usrname'])&&isset($_POST['passwd'])&&search('usr',$_POST['usrname'])&&search('usr',$_POST['usrname'])==crypt($_POST['passwd'],'passwd')){
-        //var_dump($_POST);
-        setcookie('usrname',$_POST['usrname'],time()+1000);
+    if (isset($_POST['logout'])){
+        //logout
+//        setcookie('usrname','none',time()-100);
+//        setcookie('privilege', 'none', time()-100);
+        del_cookie(['usrname', 'privilege']);
         header('Location:./index.php');
         exit();
-    }elseif (isset($_POST['logout'])){
-        //logout
-        setcookie('usrname','none',time()-1000);
+    }elseif(isset($_POST['usrname'])&&isset($_POST['passwd'])&&search('usr',$_POST['usrname'])&&search('usr',$_POST['usrname'])[0]==crypt($_POST['passwd'],'passwd')){
+        //login
+        //var_dump($_POST);
+        $privilege=search('usr',$_POST['usrname'])[1];
+        setcookie('usrname',$_POST['usrname'],time()+1000);
+        setcookie('privilege', $privilege, time()+1000);
+        header('Location:./index.php');
+        exit();
+    }elseif(isset($_GET['usrname'])&&$_GET['usrname']=='visitor'){
+        //visitor
+        setcookie('usrname',$_GET['usrname'],time()+1000);
+        setcookie('privilege', 'none', time()+1000);
         header('Location:./index.php');
     }else{
         //print_r($_POST);
@@ -44,7 +55,8 @@
                                 sticky_input('PassWord','passwd','password',30,'login_input');
                                 ?>
                         </div>
-                    <input type="submit" class="login_bu" value="Submit" name="submit" style="margin-left: 40%">
+                        <p><input type="submit" class="login_bu" value="Submit" name="submit" style="margin-left: 40%">
+                            <a href="login.php?usrname=visitor">visitor</a></p>
                 </div>
             </form>
         </div>

@@ -4,10 +4,24 @@
     include 'Functions/is_exist and del_page.php';
     include 'Functions/print_unit.php';
     $page=$_POST['page'];
+    if (isset($_COOKIE['privilege'])&&$_COOKIE['privilege']=='all'){
+        //high privilege
+//        if ($page=='root'&&$$_COOKIE!=['usrname'!='root']){
+////            default page can only be changed by root
+//            echo '<h1>Access denied!</h1>';
+//            echo '<meta http-equiv="refresh" content="1;url=\'index.php\'">';
+//            exit();
+//        }
+    }else{
+        echo '<h1>Access denied!</h1>';
+        echo '<meta http-equiv="refresh" content="1;url=\'index.php\'">';
+        exit();
+    }
     $folder=mysqli_fetch_array(search('page',$page))['father'];
     if (isset($_POST['del'])){
         del_page($_POST['page'],$folder);
         ?>
+        <h1>Delete page successfully!</h1>
         <meta http-equiv="refresh" content="1;url=./index.php">
         <?php
     }else{
@@ -22,6 +36,10 @@
                 @import "CSS/footer.css";
             </style>
             <script type="text/javascript">
+                function redir_to(url) {
+                    //    redirect to url
+                    window.location.href=url;
+                }
                 function del_node() {
                     var nodes=document.getElementsByName('checkbox');
                     for (var i=0;i<nodes.length;i++){
@@ -125,15 +143,16 @@
                 <p>
                     Type:
                     <?php
-                    mk_menu('type',array('h1','h2','h3','text','code','graph'));
+                        mk_menu('type',array('h1','h2','h3','text','code','graph'));
                     ?>
                     <button value="Insert" onclick="insert_node_after()">Insert</button>
                     <button onclick="del_node()">Delete</button>
                 </p>
             </div>
             <div class="body">
-                <form id="main_form" action="Functions/edit_handle.php" method="post" onsubmit="name_nodes()">
+                <form id="main_form" action="Functions/edit_handle.php" method="post" onsubmit="name_nodes()" enctype="multipart/form-data">
                     <input type="submit" value="Save">
+                    <span onclick="javascript:redir_to('index.php')" id="edit_quit">Quit</span>
                     <input type="hidden" name="unit_num">
                     <?php
                         print_unit($page);

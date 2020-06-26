@@ -1,6 +1,6 @@
 <?php
 //handle data edit_page submit
-
+include 'connect_db.php';
     function insert_new($dbc,$page,$node){
         //insert new record,return id
         $query="INSERT INTO $page (flag,contents) VALUES ('{$node->flag}','{$node->contents}')";
@@ -39,11 +39,15 @@
             if (is_numeric($node->id)){
                 //former node
                 $node_id=$node->id;
+                //update content
+                $query="UPDATE $page SET contents='{$node->contents}' WHERE id='{$node_id}'";
+                mysqli_query($dbc,$query);
             }else {
                 //new node
                 $node_id = insert_new($dbc, $page, $node);
                 $node->id=$node_id;      //update id data
             }
+            //build family tree
             $pointer=$n-1;
             while (($pointer>=0)){
                 //trace back by nodes and insert operating record to nearest higher level record
@@ -82,7 +86,17 @@
             $node->id=trim(htmlspecialchars($_POST['id'.$i]));
         //}
         $node->flag=trim(htmlspecialchars($_POST['flag'.$i]));
-        $node->contents=nl2br(strip_tags($_POST['contents'.$i]));
+        if ($node->flag=='graph'){
+            //for file or photo objects, store file path in database
+            global $upload_base;
+            global $read_base;
+            $path=$upload_base.$_FILES['contents'.$i]['name'];
+            move_uploaded_file($_FILES['contents'.$i]['tmp_name'], $path);//store
+            $path=$read_base.$_FILES['contents'.$i]['name'];
+            $node->contents=$path;
+        }else{
+            $node->contents=nl2br(strip_tags($_POST['contents'.$i]));
+        }
         array_push($nodes,$node);
     }
     complete_tree($page,$nodes);

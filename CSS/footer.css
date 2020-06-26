@@ -1,3 +1,10 @@
 /*@import "color_theme.css";*/
-.footer{background-color:var(--footer-bgcolor);color: var(--footer-fontcolor);height: 200px;text-align: center;font-size: 20px;font-family: Palatino Linotype;}
-.footer div{padding-top: 30px;}
+.footer{
+    background-color:var(--footer-bgcolor);color: var(--footer-fontcolor);
+    height: 100px;
+    text-align: center;font-size: 20px;font-family: Palatino Linotype;
+}
+.footer_content{
+    background-color:var(--footer-bgcolor);color: var(--footer-fontcolor);
+    padding-top: 1px;
+}

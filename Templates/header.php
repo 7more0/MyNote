@@ -16,8 +16,8 @@
 	<div class="main">
 		<div class="header">
 			<div class="header_img_div">
-                <img src="Pics/header_1.png">
-                <div style="float: right">
+                <img src="Pics/header_1.png" id="header_img">
+                <div id="header_name">
                     <h1>MyNote</h1>
                 </div>
             </div>

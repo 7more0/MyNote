@@ -24,16 +24,22 @@
                 print '<h3>' . $row['contents'] . '</h3>';
                 break;
             case 'text':
-                print '<p>' . $row['contents'] . '</p>';
+                print '<p><pre>'.$row['contents'].'</pre></p>';
                 break;
             case "code":
                 print '<div class="code">';
-                $lines = explode(';', $row['contents']);
-                print '<ol>';
-                foreach ($lines as $key => $val) {
-                    print '<li>' . $val . '</li>';
-                }
-                print '</ol></div>';
+////                auto split into lines by delimiter
+//                $lines = explode(';', $row['contents']);
+//                print '<ul>';
+//                foreach ($lines as $key => $val) {
+//                    print '<li>' . $val . '</li>';
+//                }
+//                print '</ul></div>';
+                echo '<code>'.$row['contents'].'</code>';
+                echo '</div>';
+                break;
+            case 'graph':
+                echo "<img class='contents_img' src={$row['contents']}>";
                 break;
         }
     }

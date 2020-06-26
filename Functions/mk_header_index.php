@@ -44,17 +44,18 @@ heredoc;
 heredoc;
             print $write;
             print '</ul></div></li>';
-            echo '</ul>';       //end of index list
+//            echo '</ul>';
             //user information
             $user=$_COOKIE['usrname'];
 //            $time=date('m d',time());
+            echo '<li>';
             $write=<<<heredoc
-<ul id='user_info' onmouseover="show_logout()" onmouseout="hide_logout()"><li><div><a>$user</a></div>
+<div id='user_info'><a>$user</a></div>
 heredoc;
             echo $write;
-            echo "<div id='logout' style='display: none'><ul><li><form method='post' action='Functions/login.php'><button name='logout' value='logout'>Logout</button></form>";
-            echo "</li></ul></div></li></ul>";
-
+            echo "<div><ul><li><form method='post' action='login.php'><button id='logout' name='logout' value='logout'>Logout</button></form>";
+            echo "</li></ul></div>";
+            echo "</li></ul>";//end of index list
         mysqli_close($dbc);
     }
     //mk_header_index();

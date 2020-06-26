@@ -35,7 +35,12 @@ function type_check($name, $dbc){
 //        return array($folder_match, $path);
 //    }
 }
-
+if ($_COOKIE['privilege']!='all'){
+    //only account with high privilege can make changes to contents
+    echo "<h1>Authorization denied!</h1>";
+    echo '<meta http-equiv="refresh" content="1;url=\'../index.php\'">';
+    exit();
+}
 if (isset($_POST['dia_add'])){
     //add folder/page
     $f_name=$_POST['dia_add_input'];
@@ -123,6 +128,7 @@ if (isset($_POST['dia_add'])){
                 $sons=str_ireplace($search,'',$sons);
                 $query="UPDATE sys_index SET son ='"."$sons'"." WHERE name='root'";
                 mysqli_query($dbc,$query);
+                echo '<h1>Folder successfully deleted!</h1>';
                 ?>
                 <meta http-equiv="refresh" content="1;url='../index.php'">
                 <?php
@@ -130,7 +136,7 @@ if (isset($_POST['dia_add'])){
         }else{
             //page
             del_page($item, $path, $dbc);
-            print '<h2>Done!</h2><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
+            print '<h1>Page successfully deleted!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
         }
     }
 }
