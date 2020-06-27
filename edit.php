@@ -6,12 +6,12 @@
     $page=$_POST['page'];
     if (isset($_COOKIE['privilege'])&&$_COOKIE['privilege']=='all'){
         //high privilege
-//        if ($page=='root'&&$$_COOKIE!=['usrname'!='root']){
-////            default page can only be changed by root
-//            echo '<h1>Access denied!</h1>';
-//            echo '<meta http-equiv="refresh" content="1;url=\'index.php\'">';
-//            exit();
-//        }
+        if ($page=='root'&&$_COOKIE['usrname']!='root'){
+//            default page can only be changed by root
+            echo '<h1>Access denied!</h1>';
+            echo '<meta http-equiv="refresh" content="1;url=\'index.php\'">';
+            exit();
+        }
     }else{
         echo '<h1>Access denied!</h1>';
         echo '<meta http-equiv="refresh" content="1;url=\'index.php\'">';

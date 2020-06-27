@@ -8,7 +8,7 @@
             case 'h1':
                 print '<div class="contents_title">
                                         <h1>' . $row['contents'] . '</h1>
-                                        <p>build time : ' . $row['date'] . '</p>';
+                                        <p>build time : ' . $row['create_time'] . '</p>';
                 print '<p>last edited time : ' . $row['last_edit_time'] . '<form action="edit.php" method="post">
 <input type="hidden" name="page" value="'.$page.'">
 <input type="submit" value="Edit" name="edit"><input type="submit" value="Delete" name="del">'."</form></p><p>";

@@ -5,11 +5,11 @@
         if (!mysqli_query($dbc,$query)){
             //if table doesn't exist, create table and insert it into index
             $query="CREATE TABLE `".$table."` (
-            `id` int(11) NOT NULL AUTO_INCREMENT,
-  `flag` varchar(255) NOT NULL,
-  `son` varchar(255) DEFAULT NULL,
-  `contents` varchar(255) DEFAULT NULL,
-  `father` varchar(255) DEFAULT NULL,
+            `id` int(10) NOT NULL AUTO_INCREMENT,
+  `flag` varchar(512) NOT NULL,
+  `son` varchar(512) DEFAULT NULL,
+  `contents` varchar(512) DEFAULT NULL,
+  `father` varchar(512) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `last_edit_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
