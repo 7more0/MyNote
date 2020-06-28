@@ -35,6 +35,7 @@ function type_check($name, $dbc){
 //        return array($folder_match, $path);
 //    }
 }
+
 if ($_COOKIE['privilege']!='all'){
     //only account with high privilege can make changes to contents
     echo "<h1>Authorization denied!</h1>";
@@ -43,11 +44,15 @@ if ($_COOKIE['privilege']!='all'){
 }
 if (isset($_POST['dia_add'])){
     //add folder/page
+    if (!isset($_POST['dia_add_input'])){
+        echo 'Please input folder/page name!';
+        exit();
+    }
     $f_name=$_POST['dia_add_input'];
     if (is_numeric($f_name)){
         echo "<h1>Number is not supported to be page name!</h1>";
         echo '<meta http-equiv="refresh" content="1;url=\'../index.php\'">';
-        return 0;
+        exit();
     }
     $f_type=$_POST['dia_add_type'];
     $f_path=$_POST['dia_add_path'];

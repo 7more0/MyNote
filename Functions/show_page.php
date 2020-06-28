@@ -60,6 +60,7 @@
                 }
             }
         }
+        $page=str_ireplace('\'', '', $page);//table name in ``
         $res=search('page', $page);
         $row=mysqli_fetch_array($res);
         if ($row['type']=='page'||$page=='root'){

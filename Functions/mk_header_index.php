@@ -20,8 +20,8 @@
                     $son_os=explode(',',$row['son']);
                     print '<div><ul>';
                     foreach ($son_os as $k=>$val){
-                        $url=urldecode('index.php?page='.$val);
-                        print "<li><a href=$url>$val</a></li>";
+                        $url=urldecode("index.php?page='{$val}'");
+                        print '<li><a href="'.$url.'">'.$val.'</a></li>';
                     }
                     print '</ul></div>';
                 }
@@ -84,7 +84,7 @@ heredoc;
                 $son_os = explode(',', $row['son']);
                 print '<ol>';
                 foreach ($son_os as $k => $val) {
-                    print "<li>$val<input type='checkbox' name='del_sel[]' value=$val></li>";
+                    print "<li>$val<input type='checkbox' name='del_sel[]' value='{$val}'></li>";
                 }
                 print '</ol>';
             }

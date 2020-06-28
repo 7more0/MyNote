@@ -9,7 +9,7 @@ $read_base='Storage/';
 //configure database
 //$database_type='sqlite';
 $database_type='mysql';
-$name='sys';//database name
+$name='system';//database name
 
 if ($database_type=='mysql'){
     //database connection config for mysql
@@ -39,15 +39,16 @@ EOF;
 //                $err=mysqli_error($dbc);
 ////                echo $err;
                 $query=<<<EOF
-CREATE TABLE sys_index(
-            `id` INT PRIMARY KEY  NOT NULL,
-            `name` VARCHAR(30) NOT NULL ,
-            type VARCHAR(30) NOT NULL ,
-            father varchar(30) not null ,
-            son varchar(30) default null );
+CREATE TABLE sys_index (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `father` varchar(255) NOT NULL,
+  `son` varchar(255) DEFAULT NULL
+	);
 EOF;
                 mysqli_query($dbc, $query);
-                mysqli_query($dbc, "INSERT INTO sys_index (id, name, type, father, son) VALUES (0, 'root', 'index', 'r', '');");
+                mysqli_query($dbc, "INSERT INTO sys_index (name, type, father, son) VALUES ('root', 'index', 'r', '');");
                 $query=<<<EOF
 CREATE TABLE root (
             `id` int(11) NOT NULL AUTO_INCREMENT,

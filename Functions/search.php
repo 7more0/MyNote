@@ -22,7 +22,8 @@
                     return $result;
                 case 'id':
                     //search for record in page,return link to record
-                    $query="SELECT * FROM $key_val WHERE id=$con";
+                    //table name should be contain by ``(blank space in name)
+                    $query="SELECT * FROM `$key_val` WHERE id=$con";
                     $result=mysqli_query($dbc,$query);
                     mysqli_close($dbc);
                     return $result;

@@ -4,6 +4,7 @@
         //set index(folder)
         if (isset($_GET['page'])){
             //ask for page
+            $_GET['page']=str_ireplace('\'', '', $_GET['page']);
             if ($_GET['page']=='root'){
                 $index='root';
             }else{
@@ -38,9 +39,9 @@
                     if ($index=='root'){
                         $url="index.php?folder=$val";
                     }else{
-                        $url="index.php?page=$val";
+                        $url="index.php?page='{$val}'";
                     }
-                    print "<li><a href=$url>$val</a></li>";
+                    print '<li><a href="'.$url.'">'.$val.'</a></li>';
                 }
             }
             print '</ol>';

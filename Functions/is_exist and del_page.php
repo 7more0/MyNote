@@ -10,15 +10,16 @@
   `son` varchar(255) DEFAULT NULL,
   `contents` varchar(255) DEFAULT NULL,
   `father` varchar(255) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `last_edit_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-);";
+);";//the table name should be contained by `` for there might be blank space in table name.
+//            the contents insertion part too
             //add table into sys_index
             mysqli_query($dbc,$query);
             //insert record(id=0) title(h1)
-            $date=date('Y-m-d H:i:s',time());
-            $query="INSERT INTO $table (id,flag,contents,father,date) VALUES (0,'h1','{$table}','root','{$date}')";
+//            $date=date('Y-m-d H:i:s',time());
+            $query="INSERT INTO `$table` (flag,contents,father,create_time) VALUES ('h1','{$table}','root', SYSDATE())";
             mysqli_query($dbc,$query);
             $query="INSERT INTO sys_index (name,type,father) VALUES ('"."{$table}','page','{$folder}')";
             mysqli_query($dbc,$query);
@@ -33,6 +34,7 @@
             }
             $query="UPDATE sys_index SET son ='{$sons}' WHERE name='".$folder."'";
             mysqli_query($dbc,$query);
+//            "../index.php?page='{$table}'";
             print '<h1>Successfully add a new page!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
         }else{
             print '<h1>This page already exists!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';

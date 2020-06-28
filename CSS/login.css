@@ -59,7 +59,11 @@
     box-shadow: 4px 4px 2px 0 rgba(0,0,0,0.2) inset;
     text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
 }
-body{font-family: Palatino Linotype;background-image: url("../Pics/login_bg.jpg");background-size: cover}
+body{
+    font-family: Palatino Linotype;
+    background-size: cover;
+    background: url("../Pics/login_bg.jpg") no-repeat;
+}
 .c2{margin-top:0px;}
 .c3{margin: auto;-ms-flex-item-align: center;-ms-grid-row-align: center;align-self: center;width: 19%;padding: 30px }
 #title{margin-top: 220px}
