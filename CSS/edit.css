@@ -16,3 +16,7 @@
     border: #adadad  solid 1px;
     padding: 0 8px 0 8px;
 }
+.footer{
+    /*let the footer move while adding contents into page*/
+    position: relative;
+}

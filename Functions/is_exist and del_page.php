@@ -34,7 +34,7 @@
             }
             $query="UPDATE sys_index SET son ='{$sons}' WHERE name='".$folder."'";
             mysqli_query($dbc,$query);
-//            "../index.php?page='{$table}'";
+//            $url="../index.php?page='{$table}'";
             print '<h1>Successfully add a new page!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
         }else{
             print '<h1>This page already exists!</h1><meta http-equiv="refresh" content="1;url=\'../index.php\'">';
@@ -47,7 +47,7 @@
         //delete $table and clear the index_tree
 //        include 'connect_db.php';
         //delete table
-        $query="DROP TABLE $table";
+        $query="DROP TABLE `$table`";
         mysqli_query($dbc,$query);
         $query="DELETE FROM sys_index WHERE name='{$table}'";
         mysqli_query($dbc,$query);
@@ -56,12 +56,13 @@
         $query="SELECT son FROM sys_index WHERE name='".$folder."'";
         $result=mysqli_query($dbc,$query);
         $sons=mysqli_fetch_array($result)['son'];
-        if (count(explode(',', $sons))==1){
+//        if (count(explode(',', $sons))==1){
             $search=$table;
-        }else{
-            $search=",".$table;
-        }
+//        }else{
+//            $search=",".$table;
+//        }
         $sons=str_ireplace($search,'',$sons);
+        $sons=trim($sons, ',');
         $query="UPDATE sys_index SET son ='{$sons}' WHERE name='{$folder}'";
         mysqli_query($dbc,$query);
         mysqli_close($dbc);

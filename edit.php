@@ -3,6 +3,7 @@
     include 'Functions/search.php';
     include 'Functions/is_exist and del_page.php';
     include 'Functions/print_unit.php';
+    include 'Functions/connect_db.php';
     $page=$_POST['page'];
     if (isset($_COOKIE['privilege'])&&$_COOKIE['privilege']=='all'){
         //high privilege
@@ -17,9 +18,11 @@
         echo '<meta http-equiv="refresh" content="1;url=\'index.php\'">';
         exit();
     }
+    $page=str_ireplace('\'', '', $page);
     $folder=mysqli_fetch_array(search('page',$page))['father'];
     if (isset($_POST['del'])){
-        del_page($_POST['page'],$folder);
+        del_page($_POST['page'],$folder,$dbc);
+        echo '<meta http-equiv="refresh" content="1;url=\'../index.php\'">';
         ?>
         <h1>Delete page successfully!</h1>
         <meta http-equiv="refresh" content="1;url=./index.php">
@@ -32,8 +35,8 @@
             <title>Edit</title>
             <meta charset="UTF-8">
             <style>
-                @import "CSS/edit.css";
                 @import "CSS/footer.css";
+                @import "CSS/edit.css";
             </style>
             <script type="text/javascript">
                 function redir_to(url) {
@@ -117,6 +120,8 @@
                     for (var i=0;i<node.length;i++){
                         if (node[i].checked){
                             checked.push(node[i]);
+                        //    clear selected checkbox
+                            node[i].checked=0;
                         }
                     }
                     //insert new unit in the bottom of chosen unit
@@ -132,7 +137,7 @@
                     }else if (main_form.length==1){
                         main_form.appendChild(new_node);
                     }else{
-                        alert("You should choose one unit when adding new unit!");
+                        alert("You should choose one unit when adding a new unit!");
                     }
                 }
             </script>

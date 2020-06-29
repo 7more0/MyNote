@@ -3,7 +3,7 @@
 include 'connect_db.php';
     function insert_new($dbc,$page,$node){
         //insert new record,return id
-        $query="INSERT INTO $page (flag,contents) VALUES ('{$node->flag}','{$node->contents}')";
+        $query="INSERT INTO `{$page}` (flag,contents) VALUES ('{$node->flag}','{$node->contents}')";
         mysqli_query($dbc,$query);
         $node_id=mysqli_insert_id($dbc);
         return $node_id;
@@ -11,7 +11,7 @@ include 'connect_db.php';
     function add_son($dbc,$page,$father_id,$node_id){
         //add record as a new son to father node
         //set new_node.father
-        $query="UPDATE $page SET father={$father_id} WHERE id={$node_id}";
+        $query="UPDATE `$page` SET father={$father_id} WHERE id={$node_id}";
         mysqli_query($dbc,$query);
         //add new_son to father_id
         $query="SELECT son FROM $page WHERE id=$father_id";
@@ -21,9 +21,9 @@ include 'connect_db.php';
             $sons=false;
         }
         if (empty($sons)){
-            $query="UPDATE $page SET son='"."$node_id"."' WHERE id=$father_id";
+            $query="UPDATE `$page` SET son='"."$node_id"."' WHERE id=$father_id";
         }else{
-            $query="UPDATE $page SET son='".$sons.",$node_id"."' WHERE id=$father_id";
+            $query="UPDATE `$page` SET son='".$sons.",$node_id"."' WHERE id=$father_id";
         }
         mysqli_query($dbc,$query);
     }
@@ -32,15 +32,15 @@ include 'connect_db.php';
         include 'connect_db.php';
         //reset all tree index
         //clear father and son except title
-        $query="UPDATE $page SET father='',son='' WHERE father<>'root'";mysqli_multi_query($dbc,$query);
-        $query="UPDATE $page SET son='' WHERE father='root'";mysqli_multi_query($dbc,$query);
+        $query="UPDATE `{$page}` SET father='',son='' WHERE father<>'root'";mysqli_multi_query($dbc,$query);
+        $query="UPDATE `{$page}` SET son='' WHERE father='root'";mysqli_multi_query($dbc,$query);
         $weight=array('h1'=>6,'h2'=>5,'h3'=>4,'text'=>3,'code'=>3,'graph'=>3);
         foreach ($nodes as $n=>$node){
             if (is_numeric($node->id)){
                 //former node
                 $node_id=$node->id;
                 //update content
-                $query="UPDATE $page SET contents='{$node->contents}' WHERE id='{$node_id}'";
+                $query="UPDATE `{$page}` SET contents='{$node->contents}' WHERE id='{$node_id}'";
                 mysqli_query($dbc,$query);
             }else {
                 //new node
@@ -61,9 +61,9 @@ include 'connect_db.php';
             }
         }
         //clear all nodes not in index(deleted records)
-        $query="DELETE FROM $page WHERE father=''";
+        $query="DELETE FROM `{$page}` WHERE father=''";
         mysqli_query($dbc,$query);
-        $query="DELETE FROM $page WHERE father IS NULL";
+        $query="DELETE FROM `{$page}` WHERE father IS NULL";
         mysqli_query($dbc,$query);
         mysqli_close($dbc);
     }
@@ -99,6 +99,7 @@ include 'connect_db.php';
         }
         array_push($nodes,$node);
     }
+    $page=str_ireplace('\'', '', $page);
     complete_tree($page,$nodes);
     //complete_tree('RaspberryPi',$nodes);
     ?>
