@@ -18,11 +18,15 @@ function getElementViewTop(element){
     return actualTop-elementScrollTop;
 }
 function adjust_footer() {
-    var win_height=document.documentElement.clientHeight;
+    var win_height= window.innerHeight
+        || document.documentElement.clientHeight
+        || document.body.clientHeight;
     var footer=document.getElementsByClassName('footer')[0];
     var footer_ver_pos=getElementViewTop(footer);
-    if (footer_ver_pos<(win_height)){
+    if (((win_height-footer.clientHeight)>footer_ver_pos)){
         //not enough contents in current page
         footer.style.position='absolute';
+    }else{
+        footer.style.position='relative';
     }
 }

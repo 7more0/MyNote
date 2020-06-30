@@ -131,9 +131,14 @@
                         if (parent==main_form.lastChild){
                             //selected unit is the last child of parent, directly append new_node
                             main_form.appendChild(new_node);
+                            //set footer position
+                            document.getElementsByClassName('footer')[0].style.position='relative';
+                            adjust_footer();
                         }else {
                             //selected unit in middle of the form, insert new_node after
                             main_form.insertBefore(new_node,parent.nextSibling);
+                            document.getElementsByClassName('footer')[0].style.position='relative';
+                            adjust_footer();
                         }
                     }else if (main_form.length==1){
                         main_form.appendChild(new_node);
