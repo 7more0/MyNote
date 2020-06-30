@@ -52,10 +52,10 @@ EOF;
                 $query=<<<EOF
 CREATE TABLE root (
             `id` int(11) NOT NULL AUTO_INCREMENT,
-  `flag` VARCHAR(512) NOT NULL,
-  `son` VARCHAR (512) DEFAULT NULL,
-  `contents` VARCHAR(512) DEFAULT NULL,
-  `father` VARCHAR(512) DEFAULT NULL,
+  `flag` VARCHAR(255) NOT NULL,
+  `son` VARCHAR (255) DEFAULT NULL,
+  `contents` VARCHAR(1024) DEFAULT NULL,
+  `father` VARCHAR(255) DEFAULT NULL,
   create_time datetime DEFAULT NULL,
   `last_edit_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)

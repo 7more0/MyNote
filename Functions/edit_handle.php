@@ -14,7 +14,7 @@ include 'connect_db.php';
         $query="UPDATE `$page` SET father={$father_id} WHERE id={$node_id}";
         mysqli_query($dbc,$query);
         //add new_son to father_id
-        $query="SELECT son FROM $page WHERE id=$father_id";
+        $query="SELECT son FROM `$page` WHERE id=$father_id";
         if ($res=mysqli_query($dbc,$query)){
             $sons=mysqli_fetch_array($res)['son'];
         }else{

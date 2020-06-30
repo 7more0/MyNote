@@ -38,6 +38,7 @@
                 @import "CSS/footer.css";
                 @import "CSS/edit.css";
             </style>
+            <script type="text/javascript" src="Functions/global_funcs.js"></script>
             <script type="text/javascript">
                 function redir_to(url) {
                     //    redirect to url

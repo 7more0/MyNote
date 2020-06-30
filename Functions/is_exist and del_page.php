@@ -8,7 +8,7 @@
             `id` int(11) NOT NULL AUTO_INCREMENT,
   `flag` varchar(255) NOT NULL,
   `son` varchar(255) DEFAULT NULL,
-  `contents` varchar(255) DEFAULT NULL,
+  `contents` varchar(1024) DEFAULT NULL,
   `father` varchar(255) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `last_edit_time` datetime DEFAULT NULL,

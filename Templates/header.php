@@ -9,8 +9,8 @@
         @import "CSS/body.css";
         @import "CSS/footer.css";
 	</style>
-    <script type="text/javascript" src="Functions/dialog.js">
-    </script>
+    <script type="text/javascript" src="Functions/dialog.js"></script>
+    <script type="text/javascript" src="Functions/global_funcs.js"></script>
 </head>
 <body>
 	<div class="main">
