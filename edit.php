@@ -56,6 +56,8 @@
                 function add_node() {
                     let div=document.createElement('div');
                     div.className='node_div';
+                    div.setAttribute('onclick', 'javascript:edit_select()');
+                    // div.onclick="javascript:edit_select()";
                     let flag_item = document.getElementById('menu');
                     let index=flag_item.selectedIndex;
                     let flag=flag_item.options[index].value;
@@ -79,6 +81,7 @@
                     let check=document.createElement('input');
                     check.type="checkbox";
                     check.name='checkbox';
+                    check.style.display='none';
                     div.appendChild(input_flag);
                     div.appendChild(check);
                     div.appendChild(input_contents);
@@ -133,18 +136,19 @@
                             main_form.appendChild(new_node);
                             //set footer position
                             document.getElementsByClassName('footer')[0].style.position='relative';
-                            adjust_footer();
+                            // adjust_footer();
                         }else {
                             //selected unit in middle of the form, insert new_node after
                             main_form.insertBefore(new_node,parent.nextSibling);
                             document.getElementsByClassName('footer')[0].style.position='relative';
-                            adjust_footer();
+                            // adjust_footer();
                         }
                     }else if (main_form.length==1){
                         main_form.appendChild(new_node);
                     }else{
                         alert("You should choose one unit when adding a new unit!");
                     }
+                    // setInterval(edit_select(), 1000);
                 }
             </script>
         </head>

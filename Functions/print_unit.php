@@ -7,9 +7,9 @@
     }
     function write_contents_edit($row){
         //不同类型输出
-        print '<div class="node_div">';
+        print '<div class="node_div" onclick=\'javascript:edit_select()\'>';
         print "<input type='hidden' value='{$row['flag']}'>";
-        print '<input type="checkbox" name="checkbox">';
+        print '<input type="checkbox" name="checkbox" style="display: none">';
         if ($row['flag']=='h1'||$row['flag']=='h2'||$row['flag']=='h3'){
             print "<input type='text' value='{$row['contents']}'>";
             print "<input type='hidden' value='{$row['id']}'>";
@@ -20,8 +20,8 @@
             print "<input type='hidden' value='{$row['id']}'>";
             print '</div>';
         }elseif ($row['flag']=='graph'){
-            echo "<img src='{$row['contents']}' height='200px'>";
             print "<input type='file' value='{$row['contents']}'>";
+            echo "<img src='{$row['contents']}' height='200px'>";
             print "<input type='hidden' value='{$row['id']}'>";
             print '</div>';
         }else{

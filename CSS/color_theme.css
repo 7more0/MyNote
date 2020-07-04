@@ -14,4 +14,8 @@
     /*control panels*/
     --control_bgcolor:var(--header-bgcolor);
     --control_fontcolor:var(--header-fontcolor);
+    /*edit color*/
+    --edit-text-node-color:#008fd3;
+    /*--edit-code-node-color: yellow;*/
+    --edit-sel-node-color:yellow;
 }

@@ -30,3 +30,20 @@ function adjust_footer() {
         footer.style.position='relative';
     }
 }
+function edit_select() {
+    //get select node and set checkbox
+    var selected_node=document.getSelection();
+    if(!evnt){
+        var evnt = window.event;
+    }
+    //clicked element
+    var tar = evnt.target;
+    var selected_node=tar.parentElement;
+    var checkbox=selected_node.childNodes[1];
+    var node=document.getElementsByName('checkbox');
+    for (var i=0;i<node.length;i++){
+        //clear selected checkbox
+        node[i].checked=0;
+    }
+    checkbox.checked=1;
+}
