@@ -10,7 +10,7 @@
     --guide-bgcolor:var(--header-fontcolor);
     /*special format font color setting*/
     --code-color:#008fd3;
-    --code-bgcolor:#010005;
+    --code-bgcolor:#2d2d2d;
     /*control panels*/
     --control_bgcolor:var(--header-bgcolor);
     --control_fontcolor:var(--header-fontcolor);

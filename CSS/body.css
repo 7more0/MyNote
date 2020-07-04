@@ -51,9 +51,34 @@ body{
 .guide_left a{text-decoration: none;}
 
 .contents{width: 80%;margin-left: 25%;z-index: 1;}
+.contents ul{
+    list-style: none;
+    padding-left: 20px;
+}
+.contents>ol{
+    /*page level list*/
+    padding-left: 0;
+    /*font-size: inherit;*/
+    counter-reset:section;
+    list-style-type: none;
+}
+.h2_ol{
+    /*content*/
+    list-style-type: lower-latin;
+}
+.contents>ol>li:before{
+    /*h2*/
+    counter-increment:section;
+    content:counters(section, '.') " ";
+    /*list-style-position: outside;*/
+    font-size: 1.5em;
+}
+.h2_li span{
+    list-style-position: outside;
+    font-size: 1.5em; margin: .75em 0;
+}
 .contents_title p{width: 50%}
 .contents div{width: 90%;padding: 0}
-.contents ol{list-style: decimal;}
 .contents_title{padding-left: 20px;}
 .contents_img{
     /*width: 50px;*/
@@ -62,13 +87,28 @@ body{
 /*code style*/
 div.code{
     background-color: var(--code-bgcolor);color: var(--code-color);
+    border-radius: 3px;
     width: 90%;
-    padding: 5px 0 5px 20px;
+    padding: 5px 0 5px 12px;
     font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
     "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
     "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 }
-/*.code ul{*/
-/*    padding-left: 30px;*/
-/*    list-style: none;*/
-/*}*/
+.code ol {
+    /*code list*/
+    padding-left: 0;
+    counter-reset:code_sec;
+    /*padding-left: 30px;*/
+    list-style-type: none;
+}
+.code ol>li:before{
+    counter-increment:code_sec;
+    content:counters(code_sec, '.') " ";
+    text-align: right;
+    display: inline-block;
+    width: 1em;
+    /*margin-left: -2.5em;*/
+    margin-right: 0.5em;
+    /*direction: rtl*/
+    /*font-size: 1.5em;*/
+}
