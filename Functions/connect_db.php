@@ -10,10 +10,12 @@ $read_base='Storage/';
 //$database_type='sqlite';
 $database_type='mysql';
 $name='system';//database name
+$user='root';
+$passwd='install';
 
 if ($database_type=='mysql'){
     //database connection config for mysql
-        if ($dbc=mysqli_connect('localhost','root','install')){
+        if ($dbc=mysqli_connect('localhost',$user,$passwd)){
 //            $query="CREATE DATABASE IF NOT EXISTS $name";
             if (mysqli_select_db($dbc,$name)){
                 //choose database
